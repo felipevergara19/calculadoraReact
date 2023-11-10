@@ -1,46 +1,57 @@
-import './App.css';
-import logo from './Images/Felipe Vergara-logos_black_short.png';
-import Button from './components/button';
-import Screen from './components/screen';
-import Clear from './components/Clear';
+import "./App.css";
+import logo from "./Images/Felipe Vergara-logos_black_short.png";
+import Button from "./components/button";
+import Screen from "./components/screen";
+import Clear from "./components/Clear";
+import { useState } from "react";
+import { evaluate } from "mathjs";
 
 function App() {
+  const [input, setInput] = useState("");
+  const addInput = (val) => {
+    setInput(input + val);
+  };
+
+  const result = () => {
+    if (input) {
+      setInput(evaluate(input));
+    } else {
+      alert("Valores en blanco");
+    }
+  };
   return (
     <div className="App">
-      <div className='logo-contenedor'>
-        <img 
-          src={logo}
-          className='logo'
-          alt='Logo'/>
+      <div className="logo-contenedor">
+        <img src={logo} className="logo" alt="Logo" />
       </div>
-      <div className='contenedor-calculadora'>
-        <Screen />
-        <div className='fila'>
-          <Button>1</Button>
-          <Button>2</Button>
-          <Button>3</Button>
-          <Button>+</Button>
+      <div className="contenedor-calculadora">
+        <Screen input={input} />
+        <div className="fila">
+          <Button handlerClic={addInput}>1</Button>
+          <Button handlerClic={addInput}>2</Button>
+          <Button handlerClic={addInput}>3</Button>
+          <Button handlerClic={addInput}>+</Button>
         </div>
-        <div className='fila'>
-          <Button>4</Button>
-          <Button>5</Button>
-          <Button>6</Button>
-          <Button>-</Button>
+        <div className="fila">
+          <Button handlerClic={addInput}>4</Button>
+          <Button handlerClic={addInput}>5</Button>
+          <Button handlerClic={addInput}>6</Button>
+          <Button handlerClic={addInput}>-</Button>
         </div>
-        <div className='fila'>    
-          <Button>7</Button>
-          <Button>8</Button>
-          <Button>9</Button>
-          <Button>*</Button>
+        <div className="fila">
+          <Button handlerClic={addInput}>7</Button>
+          <Button handlerClic={addInput}>8</Button>
+          <Button handlerClic={addInput}>9</Button>
+          <Button handlerClic={addInput}>*</Button>
         </div>
-        <div className='fila'>
-          <Button>=</Button>
-          <Button>0</Button>
-          <Button>.</Button>
-          <Button>/</Button>
+        <div className="fila">
+          <Button handlerClic={result}>=</Button>
+          <Button handlerClic={addInput}>0</Button>
+          <Button handlerClic={addInput}>.</Button>
+          <Button handlerClic={addInput}>/</Button>
         </div>
-        <div className='fila'>
-          <Clear>Clear</Clear>
+        <div className="fila">
+          <Clear handlerClear={() => setInput("")}>Clear</Clear>
         </div>
       </div>
     </div>

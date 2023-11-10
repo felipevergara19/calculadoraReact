@@ -2,7 +2,9 @@ import React from "react";
 import '../stylesheet/Clear.css'
 
 const Clear = (props) => (
-  <div className="button-clear">
+  <div 
+    className="button-clear" 
+    onClick={props.handlerClear}>
     {props.children}
   </div>
 );
