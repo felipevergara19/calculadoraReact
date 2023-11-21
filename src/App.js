@@ -1,8 +1,8 @@
 import "./App.css";
-import logo from "./Images/Felipe Vergara-logos_black_short.png";
 import Button from "./components/button";
 import Screen from "./components/screen";
 import Clear from "./components/Clear";
+import Logo from "./components/logo";
 import { useState } from "react";
 import { evaluate } from "mathjs";
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <div className="logo-contenedor">
-        <img src={logo} className="logo" alt="Logo" />
+        <Logo />
       </div>
       <div className="contenedor-calculadora">
         <Screen input={input} />
